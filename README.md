@@ -27,6 +27,14 @@ https://blog.bounceless.io/mastering-email-validation-in-mongoose-syntax-uniquen
 Mongose v8.3.3: Validation
 https://mongoosejs.com/docs/validation.html
 
+
 https://github.com/jbtiglao/social-media-API/blob/main/models/User.js
+
+
+https://github.com/siennameow/social-network-API/blob/main/models/User.js
+
+
+https://github.com/ThomasCalle/Thomas-NoSQL-Social-Network-API/blob/main/models/User.js
+
 
 University of Toronto. (2023). Coding Boot Camp [Source Code].
