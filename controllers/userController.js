@@ -46,9 +46,27 @@ module.exports = {
             const user = await User.findOneAndRemove({ _id: req.params.userId });
             
             if (!user) {
-                return res.status(404).json({ message: "No such user exists" })
+              return res.status(404).json({ message: "No such user exists" })
             }   
             
-    
+            const thought = await Thought.findOneAndUpdate(
+                { users: req.params.userId },
+                { $pull: { users: req.params.userId } },
+                { new: true }
+            );
 
+            if (!thought) {
+              return res.status(404).json({
+                    messsage: "User and thoughts deleted!",
+              });
+            }
+            
+            res.json({ message: "User successfully deleted!" });
+        }   catch (err) {
+            console.log(err);
+            res.status(500).json(err);
+        }
+    },
+
+    
     }
