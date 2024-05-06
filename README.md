@@ -17,4 +17,16 @@ A social network API
 
 ## Credits
 
+Mongoose: Validate email syntax
+https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax
+
+
+(2023, September 5). Mastering Email Validation in Mongoose: Syntax, Uniqueness, and Beyond
+https://blog.bounceless.io/mastering-email-validation-in-mongoose-syntax-uniqueness-and-beyond/
+
+Mongose v8.3.3: Validation
+https://mongoosejs.com/docs/validation.html
+
+https://github.com/jbtiglao/social-media-API/blob/main/models/User.js
+
 University of Toronto. (2023). Coding Boot Camp [Source Code].

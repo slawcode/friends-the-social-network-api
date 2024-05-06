@@ -1,4 +1,4 @@
-// Import required dependencies from monogoose library
+// Import required dependencies from Monogoose library
 const { Schema, model} = require('moongoose');
 
 // User schema 
@@ -14,7 +14,7 @@ const user Schema = new Schema(
             type: String,
             required: true,
             unique: true,
-            match: [],
+            match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please provide a valid email address'],
         }
     }
 )
