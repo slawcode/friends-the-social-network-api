@@ -16,3 +16,5 @@ A social network API
 - There is no license for this project.
 
 ## Credits
+
+University of Toronto. (2023). Coding Boot Camp [Source Code].

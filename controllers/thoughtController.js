@@ -1,7 +1,8 @@
 const { User, Thought } = require("../models");
 
 module.exports = {
-// Get all users 
+
+    // Get all users 
   async getAllThoughts(req, res) {
     try { 
       const thoughts = await Thought.find({});
@@ -10,6 +11,7 @@ module.exports = {
         res.status(500).json(err);
     }
   },
+
 // Get a single thought 
   async getSingleThought(req, res) {
     try {
@@ -23,6 +25,7 @@ module.exports = {
         res.status(505).json(err);
     }
   },
+
 // Create a thought
   async createThought(req, res) {
     try {
@@ -49,4 +52,23 @@ module.exports = {
         res.status(500).json(err);
       }
     },
-}
+
+// Update a thought
+  async updateThought(req,res) {
+    try {
+        const thought = await Thought.findOneAndUpdate(
+            { _id: req.params.courseId },
+            { $set: req.body },
+            { runValidators: true, new: true }
+        );
+
+        if (!thought) {
+            return res.status(404).json({ message: "No thoguht with that ID!" });
+        }
+
+        res.json(thought);
+    }   catch (err) {
+        res.status(500).json(err);
+    }
+  },  
+};
