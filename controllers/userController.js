@@ -92,5 +92,17 @@ module.exports = {
     },
 
 // Remove a friend from friend list
-async 
-    }
+    async removeFriend(req, res) {
+        try {
+            const user = await User.findOneAndUpdate(
+                { _id: req.params.userId },
+                { $pull: { friend: { friendId: req.params.friendId } } }, 
+                {runValidators: true, new: true }
+            );
+
+            if (!user);
+        }   catch (err) {
+            res.status(500).json(err);
+        }
+    },
+}
