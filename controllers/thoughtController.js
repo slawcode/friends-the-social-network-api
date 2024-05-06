@@ -2,21 +2,35 @@ const { User, Thought } = require("../models");
 
 module.exports = {
 // Get all users 
-  async getThought(req, res) {
-    try Thought.find({})
-    .then((user) => res.json(user))
-    .catch((err) => res.status(500).json(err));
+  async getAllThoughts(req, res) {
+    try { 
+      const thoughts = await Thought.find({});
+      res.json(thoughts);
+    } catch (err) {
+        res.status(500).json(err);
+    }
   },
 // Get a single thought 
-  getSingleThought(req, res) {
-    Thought.findOne({ _id: req.params.thoughtId })
-    .select("-__v")
-    .then((thought) =>
-    if (!thought) {
-        return res.status(404).json({ message: "No thought that ID! "})
+  async getSingleThought(req, res) {
+    try {
+        const thought = await Thought.findOne({ _id: req.params.thoughtId });
+        if (!thought) {
+            res.status(404).json({ message: "No thoguth with that ID!" });
+        }
+
+        res.json(thought);
+    }   catch (err) {
+        res.status(505).json(err);
     }
-    res.json(thought);
-  } catch (err) {
-    res.status(500).json(err);
   },
-}
+//Create a thought
+  async createThought(req, res) {
+    try {
+        const thought = await Thought.create(req.body);
+        res.json(thought);
+    }   catch (err) {
+        console.log(err);
+        return res.status(500).json(err);
+    }
+    }, 
+  }
