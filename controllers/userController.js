@@ -40,7 +40,7 @@ module.exports = {
         }
     },
 
-// Delete a user and remove their thoughts 
+// Delete a user and remove their thoughts (bonus)
     async deleteUser(req, res) {
         try {
             const user = await User.findOneAndRemove({ _id: req.params.userId });
@@ -68,5 +68,29 @@ module.exports = {
         }
     },
 
-    
+// Add a friend to friend list 
+    async addFriend(req, res) {
+        try {
+            console.log("You are adding a friend!");
+            console.log(req.body);
+            const user = await User.findOneAndUpdate(
+                { _id: req.params.userId },
+                { $addToSet: { friends: req.body } },
+                { runValidators: true, new: true }
+            );
+
+            if (!user) {
+                return res.status(404)
+                .json({ message: "No user found with that ID!" })
+            }
+
+            res.json(user);
+        }   catch (err) {
+            res.status(500).json(err);
+        }
+
+    },
+
+// Remove a friend from friend list
+async 
     }
