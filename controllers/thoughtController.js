@@ -23,7 +23,7 @@ module.exports = {
         res.status(505).json(err);
     }
   },
-//Create a thought
+// Create a thought
   async createThought(req, res) {
     try {
         const thought = await Thought.create(req.body);
@@ -33,4 +33,20 @@ module.exports = {
         return res.status(500).json(err);
     }
     }, 
-  }
+  
+// Delete a thought 
+  async deleteThought(req, res) {
+    try {
+        const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
+
+        if (!thought) {
+            return res.status(404).json({ message: "No thought with that ID!" });
+        }
+    
+        await Reaction.deleteMany({ _id: { $in: thought.reactions } });
+        res.json({ message: 'Thought and reaction deleted!' });
+      } catch (err) {
+        res.status(500).json(err);
+      }
+    },
+}
