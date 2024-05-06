@@ -30,14 +30,25 @@ module.exports = {
         }
     },
 
-    // Create a new user
+// Create a new user
     async createUser(req, res) {
         try {
             const user = await User.create(req.body);
             res.json(user);
-        } catch (err) {
+        }   catch (err) {
             res.status(500).json(err);
         }
     },
+
+// Delete a user and remove their thoughts 
+    async deleteUser(req, res) {
+        try {
+            const user = await User.findOneAndRemove({ _id: req.params.userId });
+            
+            if (!user) {
+                return res.status(404).json({ message: "No such user exists" })
+            }   
+            
     
+
     }
