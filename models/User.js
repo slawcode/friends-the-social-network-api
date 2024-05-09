@@ -2,7 +2,7 @@
 const { Schema, model} = require('moongoose');
 
 // User schema 
-const user Schema = new Schema(
+const usercodeSchema = new Schema(
     {
         username: {
             type: String,
@@ -14,7 +14,7 @@ const user Schema = new Schema(
             type: String,
             required: true,
             unique: true,
-            match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please provide a valid email address."], // Email validation 
+            match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please provide a valid email address."], // Email validation with regular expression
         },
         thoughts: [ 
             {
