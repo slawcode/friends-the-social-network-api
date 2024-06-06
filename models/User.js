@@ -2,7 +2,7 @@
 const { Schema, model } = require('moongoose');
 
 // User schema 
-const usercodeSchema = new Schema(
+const userSchema = new Schema(
     {
         username: {
             type: String,
@@ -47,4 +47,4 @@ userSchema.virtual('friendCount').get(function(){
 const User = model('User', userSchema)
 
 // Export the User model
-module.exports = User 
+module.exports = User; 
