@@ -1,5 +1,5 @@
 // Import required dependencies from Monogoose library
-const { Schema, model } = require('moongoose');
+const { Schema, model } = require('mongoose');
 
 // User schema 
 const userSchema = new Schema(
