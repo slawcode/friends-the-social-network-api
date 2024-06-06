@@ -1,4 +1,5 @@
 const { User, Thought } = require("../models");
+const {Types} = require('monogoose');
 
 // module.exports = {
 const thoughtController = {
@@ -17,7 +18,7 @@ const thoughtController = {
     try {
         const thought = await Thought.findOne({ _id: req.params.thoughtId });
         if (!thought) {
-            res.status(404).json({ message: "No thoguth with that ID!" });
+            res.status(404).json({ message: "No thougth with that ID!" });
         }
 
         res.json(thought);
@@ -73,4 +74,4 @@ const thoughtController = {
   },  
 };
 
-modeule.exports = thoughtController;
+module.exports = thoughtController;

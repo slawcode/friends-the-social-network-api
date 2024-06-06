@@ -3,8 +3,10 @@ const express = require('express'); // Import Express.JS
 const db = require('./config/connection');
 const routes = require('./routes');
 
+// const cwd = process.cwd();
+
 // Middleware to parse incoming data
-const PORT = process.env.PORT || 3131;
+const PORT = 3131;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));

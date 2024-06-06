@@ -25,10 +25,16 @@ const usercodeSchema = new Schema(
 
         friends: [
             {
-                type: Schema. Types.objectId,
+                type: Schema.Types.ObjectId,
                 ref: 'User',
-            }
+            },
         ],
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
     }
 );
 
