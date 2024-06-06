@@ -1,7 +1,7 @@
 const { User, Thought } = require("../models");
 
-module.exports = {
-
+// module.exports = {
+const thoughtController = {
     // Get all users 
   async getAllThoughts(req, res) {
     try { 
@@ -63,7 +63,7 @@ module.exports = {
         );
 
         if (!thought) {
-            return res.status(404).json({ message: "No thoguht with that ID!" });
+            return res.status(404).json({ message: "No thought with that ID!" });
         }
 
         res.json(thought);
@@ -72,3 +72,5 @@ module.exports = {
     }
   },  
 };
+
+modeule.exports = thoughtController;

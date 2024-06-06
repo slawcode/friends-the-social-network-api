@@ -2,13 +2,13 @@
 A social network API
 
 ## Description
-- A social network web application where users can share their thoughts, react to friend's thoughts and create a friend list. It utilizes xpress.js for routing, a MongoDB database and Mongoose ODM. The seed data is created using Postman.
+- A social network web application where users can share their thoughts, react to friend's thoughts and create a friend list. It utilizes Express.js for routing, a MongoDB database and Mongoose ODM. The seed data is created using Postman.
 
 ## Installation
 - 
 
 ## Usage
-- 
+- Video showing usage of this project:
 
 - Screenshots showing usage of this project: 
 
