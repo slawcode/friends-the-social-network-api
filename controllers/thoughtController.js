@@ -1,5 +1,5 @@
 const { User, Thought } = require("../models");
-const {Types} = require('monogoose');
+const {Types} = require('mongoose');
 
 // module.exports = {
 const thoughtController = {
@@ -73,5 +73,33 @@ const thoughtController = {
     }
   },  
 };
+
+// Create a reaction 
+  // async createReaction(req, res) {
+  //   try {
+  //     const thought = await Thought.findOneAndUpdate(
+  //       { _id:req.params.thoughtId },
+  //       { $addToSet: { reactions: req.body }},
+  //       { runValidators: true, new: true }
+  //     );
+  //     thought ? res.json(thought) : res.status(404).json({ message: "No thought found" });
+  //   } catch (e) {
+  //       res.status(500).json(e);
+  //   }
+  // };
+
+  createReaction(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $addToSet: { reactions: req.body } },
+      { runValidators: true, new: true }
+    )
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: "No thought frind with ID!" })
+          : res.json(thought)
+      )
+      .catch((err) => res.status(500).json(err));
+    }    
 
 module.exports = thoughtController;
