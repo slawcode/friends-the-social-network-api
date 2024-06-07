@@ -1,4 +1,4 @@
-const { User, Thought } = require("..models/models");
+const { User, Thought } = require('../models');
 // const { Types } = require('mongoose');
 
 // module.exports = {
@@ -87,7 +87,7 @@ const thoughtController = {
         res.status(500).json(err);
     }
   }
-},
+
   // createReaction(req, res) {
   //   Thought.findOneAndUpdate(
   //     { _id: req.params.thoughtId },
@@ -116,7 +116,25 @@ const thoughtController = {
     }
 }
 
-};
+// removeReaction(req, res) {
+//   Thought.findOneAndUpdate(
+//     { _id: req.params.thoughtId },
+//     { $pull: { reactions: { reactionId: req.params.reactionId } } },
+//     { runValidators: true, new: true }
+//   )
+//     .then((dbThoughtData) => {
+//       if (!dbThoughtData) {
+//         return res.status(404).json({ message: "No thought with this id!" });
+//       }
+//       res.json(dbThoughtData);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// },
+
+}
 
   //     if (!thought) {
   //     return res.status(404).json({ message: 'No such thought exists!' });
