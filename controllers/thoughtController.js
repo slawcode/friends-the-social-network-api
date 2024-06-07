@@ -1,5 +1,5 @@
 const { User, Thought } = require("../models");
-const {Types} = require('mongoose');
+// const { Types } = require('mongoose');
 
 // module.exports = {
 const thoughtController = {
@@ -72,34 +72,47 @@ const thoughtController = {
         res.status(500).json(err);
     }
   },  
-};
+
 
 // Create a reaction 
-  // async createReaction(req, res) {
-  //   try {
-  //     const thought = await Thought.findOneAndUpdate(
-  //       { _id:req.params.thoughtId },
-  //       { $addToSet: { reactions: req.body }},
-  //       { runValidators: true, new: true }
-  //     );
-  //     thought ? res.json(thought) : res.status(404).json({ message: "No thought found" });
-  //   } catch (e) {
-  //       res.status(500).json(e);
-  //   }
-  // };
+  async createReaction(req, res) {
+    try {
+      const thought = await Thought.findOneAndUpdate(
+        { _id:req.params.thoughtId },
+        { $addToSet: { reactions: req.body }},
+        { runValidators: true, new: true }
+      );
+      thought ? res.json(thought) : res.status(404).json({ message: 'No thought found!' });
+    } catch (e) {
+        res.status(500).json(err);
+    }
+  }
+}
+  // createReaction(req, res) {
+  //   Thought.findOneAndUpdate(
+  //     { _id: req.params.thoughtId },
+  //     { $addToSet: { reactions: req.body } },
+  //     { runValidators: true, new: true }
+  //   )
+  //     .then((thought) =>
+  //       !thought
+  //         ? res.status(404).json({ message: "No thought frind with ID!" })
+  //         : res.json(thought)
+  //     )
+  //     .catch((err) => res.status(500).json(err));
+  //   }    
 
-  createReaction(req, res) {
-    Thought.findOneAndUpdate(
-      { _id: req.params.thoughtId },
-      { $addToSet: { reactions: req.body } },
-      { runValidators: true, new: true }
-    )
-      .then((thought) =>
-        !thought
-          ? res.status(404).json({ message: "No thought frind with ID!" })
-          : res.json(thought)
-      )
-      .catch((err) => res.status(500).json(err));
-    }    
+  async removeReaction(req, res) {
+    try {
+      const thought = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
+        { $pull: { reactions: {reactionId: req.params.reactionId }}},
+        { runValidators: true, new: true }
+      );
+      if (!thought) {
+      return res.status(404).json({ message: 'No such thought exists!' });
+    }
+  }
+};
 
 module.exports = thoughtController;
