@@ -7,10 +7,6 @@ const reactionSchema = new Schema (
             type: Schema.Types.ObjectId,
             default: () => new Types.ObjectId(),
         },
-        reactionId: {
-            type: Schema.Types.ObjectId,
-            default: () => new Types.ObjectId(),
-        },
         reactionBody: {
             type: String,
             required: true,

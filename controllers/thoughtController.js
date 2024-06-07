@@ -1,5 +1,5 @@
-const { User, Thought } = require("../models");
-const {Types} = require('monogoose');
+const { User, Thought } = require('../models');
+// const { Types } = require('mongoose');
 
 // module.exports = {
 const thoughtController = {
@@ -72,6 +72,72 @@ const thoughtController = {
         res.status(500).json(err);
     }
   },  
-};
+
+
+// Create a reaction for a thought
+  async createReaction(req, res) {
+    try {
+      const thought = await Thought.findOneAndUpdate(
+        { _id:req.params.thoughtId },
+        { $addToSet: { reactions: req.body }},
+        { runValidators: true, new: true }
+      );
+      thought ? res.json(thought) : res.status(404).json({ message: 'No thought found!' });
+    } catch (e) {
+        res.status(500).json(err);
+    }
+  }
+
+  // createReaction(req, res) {
+  //   Thought.findOneAndUpdate(
+  //     { _id: req.params.thoughtId },
+  //     { $addToSet: { reactions: req.body } },
+  //     { runValidators: true, new: true }
+  //   )
+  //     .then((thought) =>
+  //       !thought
+  //         ? res.status(404).json({ message: "No thought with this ID!" })
+  //         : res.json(thought)
+  //     )
+  //     .catch((err) => res.status(500).json(err));
+  //   }    
+
+  // Remove a reaction from a thought
+  async removeReaction(req, res) {
+    try {
+      const thought = await Thought.findOneAndUpdate(
+          { _id: req.params.thoughtId },
+          { $pull: {reactions: {reactionId: req.params.reactionId }}},
+          { runValidators: true, new: true }
+      );
+      thought ? res.json(thought) : res.status(404).json({ message: 'No such thought exists!' });
+    } catch (e) {
+      res.status(500).json(e);
+    }
+}
+
+// removeReaction(req, res) {
+//   Thought.findOneAndUpdate(
+//     { _id: req.params.thoughtId },
+//     { $pull: { reactions: { reactionId: req.params.reactionId } } },
+//     { runValidators: true, new: true }
+//   )
+//     .then((dbThoughtData) => {
+//       if (!dbThoughtData) {
+//         return res.status(404).json({ message: "No thought with this id!" });
+//       }
+//       res.json(dbThoughtData);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// },
+
+}
+
+  //     if (!thought) {
+  //     return res.status(404).json({ message: 'No such thought exists!' });
+  //   }
 
 module.exports = thoughtController;
