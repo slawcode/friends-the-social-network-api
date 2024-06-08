@@ -86,7 +86,7 @@ const thoughtController = {
     } catch (e) {
         res.status(500).json(err);
     }
-  }
+  },
 
   // createReaction(req, res) {
   //   Thought.findOneAndUpdate(
