@@ -32,9 +32,9 @@ A social network API
 
 ## Videos
 - Videos showing usage of this project beginning with npm start command in terminal:
-https://drive.google.com/file/d/1UAk5DTeuW_Ek_68h3C877P_j6MssY5Ia/view?usp=sharing
+https://drive.google.com/file/d/1rXX4X8oeqCsgPj2026eyxBpFSn4Ifl3o/view
 
-https://drive.google.com/file/d/1rXX4X8oeqCsgPj2026eyxBpFSn4Ifl3o/view?usp=sharing
+https://drive.google.com/file/d/1UAk5DTeuW_Ek_68h3C877P_j6MssY5Ia/view
 
 ## Screenshots
 - Screenshots showing usage of this project: 
